@@ -148,7 +148,7 @@ team.forEach ((person) => {
 
 
 team.forEach ((name, surname, job, age) => {
-    
+
     
     console.log("Name:", name);
     console.log("Surname:", surname);
@@ -157,15 +157,75 @@ team.forEach ((name, surname, job, age) => {
     console.log(" + + + + + ++ + + + ++ + + + ");
 })
 
+//! ----- FUNCTIONLARDA DESTRUC KULLANIMI -----
+
+const objGoster = function () {
+    return  {
+        name: "Hazel",
+        surname: "Nut",
+        job: "team lead",
+        age: 40,
+      }
+}
 
 
+//* function doldurdugu obje dogrudan dest yapilabilir.
+// console.log(objGoster());
+let {name, surname, job, age} = objGoster()
+console.log(name, surname, );
+console.log("Age:", ++age);
 
+//? Function parametresi
+const data = {
+    id: "123",
+desc: "This is top secreet information.",
+createdTime: "1900"
+}
 
+const printData = (data) => {
+    console.log(data);
+    console.log(`${data.id} - ${data.desc} - ${data.createdTime}`);
+}
+
+const printDataDestr = (data) => {
+    const { id, desc, createdTime} = data
+    console.log(`${id} - ${desc} - ${createdTime}`);
+}
+
+const printDataDestrAir = ({id, desc, createdTime}) => {
+    console.log(`${id} - ${desc} - ${createdTime}`);
+}
+printData (data);
+printDataDestr(data);
+printDataDestrAir(data);
+
+//! Daha cok objelerde kullanilir
 
 
 //* =============================================
 //*  DESTRUCTURING (ARRAY)
 //* =============================================
+
+const people = ["Ali", "Veli", "Canan", "Can"]
+let ali = people[0]
+
+ali = "John"
+console.log(people);
+
+people[0] = ali
+console.log(people);
+
+const [kisi1, kisi2, kisi4] = people  // sirasi ile 1., 2. ve 3. kisiyi alir.
+console.log(kisi1, kisi2, kisi4);
+
+const [kisia, kisib, , kisic] = people // "," ile pas gecip 4. kisiyi aliriz
+console.log(kisia, kisib, kisic);
+
+
+
+
+
+
 
 //* ==============================================
 //*  REST (...)
