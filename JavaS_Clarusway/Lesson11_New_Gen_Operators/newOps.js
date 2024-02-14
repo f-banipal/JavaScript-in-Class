@@ -147,7 +147,15 @@ team.forEach ((person) => {
 })
 
 
-
+team.forEach ((name, surname, job, age) => {
+    
+    
+    console.log("Name:", name);
+    console.log("Surname:", surname);
+    console.log("Job:", job);
+    console.log("Age:", age);
+    console.log(" + + + + + ++ + + + ++ + + + ");
+})
 
 
 
