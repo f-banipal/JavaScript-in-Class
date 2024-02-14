@@ -309,7 +309,81 @@ console.log(Math.max(...numbers));  // 5
 console.log(Math.max(2, 9, ...numbers));  // 9
 
 
+/* ========================================================================*/
+//! ========================================================================
 
 
+//? nested
+// =========
+const sahislar = {
+    sahis1: {
+      name: "Can",
+      surname: "Canan",
+      dob: "1990",
+      job: "developer",
+      salary: "140000",
+      drivingLicense: true,
+    },
+    sahis2: {
+      name: "John",
+      surname: "Sweet",
+      dob: "1990",
+      job: "tester",
+      salary: "110000",
+      drivingLicense: false,
+    },
+    sahis3: {
+      name: "Steve",
+      surname: "Job",
+      dob: "2000",
+      job: "developer",
+      salary: "90000",
+      drivingLicense: true,
+    },
+  }
+
+//   Objeler dogal olarak sirali olmadiklarindan, klasik for dongusu ile icerilerinde dolasamayiz.
+
+//? JavaScript'te objeler default olarak iterable degildir.
+//?
+
+//! FOR - IN
+//* for (key in object) {
+//* code block to be executed
+//* }
+
+//? s => objedeki her bir key i gosterir. 
+
+for (let s in sahislar){
+console.log(s);
+console.log(sahislar[s]);  //! square bracket (her bir objeyi getirir.)
+console.log(sahislar[s].salary);  //! (Her bir maasi getirir)
+}
+
+//? Kullanisli Object Metotlari:
+console.log(Object.keys(sahislar));  //? objenin key'leri array olarak gosterir.
+console.log(Object.values(sahislar.sahis2));  //? Her bir objenin value 'sunu array olarak dondurur
+console.log(Object.values(sahislar.sahis1));  //? Her bir objenin value 'sunu array olarak dondurur
+console.log(Object.values(sahislar.sahis3));  //? Her bir objenin value 'sunu array olarak dondurur
+
+console.log(Object.entries(sahislar));  // Objenin key-value ciftini array olarak dondurur
+console.log(Object.entries(sahislar.sahis1));
 
 
+//! FOR - OF
+//* for (let x of iterable) {
+//* code block to be executed
+//* }
+
+for (let key of Object.keys(sahislar)) {
+    // console.log(key);
+
+    console.log(sahislar[key].salary);  //! square
+}
+
+console.log("************************************");
+for (let v of Object.values(sahislar)) {
+    console.log(v.job);
+    console.log(v.salary);
+   
+}
