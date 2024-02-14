@@ -225,12 +225,91 @@ console.log(kisia, kisib, kisic);
 
 
 
-
-
 //* ==============================================
-//*  REST (...)
+//*  REST (...) : Geri Kalan
 //* =============================================
+
+//? RESRv operatori kullanici tarafindan girilen degerleri dizi icerisinde konumlandirir. Cesitli kullanim alanlari vardir.
+
+//! 1- Bir dizi veya object'deki bazi degerlerden geri kalanlarini ayri dizi yada objelere kopyalamasini saglayabilir.
+
+//? REST: Array
+//*********** */
+const araclar = ["Kamyon", "Tir", "Kamyonet", "Araba", "Minibus"]
+
+const [arac1, arac2, arac3, ...binekAraclar] = araclar
+console.log(arac1, arac2, arac3);
+console.log(binekAraclar);
+
+
+//? REST: Object
+//************* */
+
+const person = {
+    ad: "Hazel",
+    soyad: "Nut",
+    is: "team lead",
+    yas: 40,
+  }
+  
+  const { ad, soyad, yas, ...geriKalanlar } = person
+  console.log(geriKalanlar)
+
+
+//! 2- Bir fonksiyonun argumanlarini diziye cevirmek icin kullanilabilir.
+
+const topla = (a, b) => a + b
+console.log(topla(1, 5, 2, 7, 9));   // 6
+
+const toplam = (a, b, c) => a + b + c
+console.log(toplam(1, 5, 2, 7, 9));  // 8
+
+const toplami = (...sayilar) => {
+    return sayilar.reduce((a, b) => a + b)
+    console.log("TOPLAM:", );
+    
+}
+console.log(toplami(1, 5, 2, 7, 9));
+
+
+//? REST (...) ile non - iterable olan sayilari  iterable hale (diziye) cevirmis olduk
+
+
 
 //* =============================================
 //*  SPREAD (...)
 //* =============================================
+//? Spread operatoru ise iterables olan bir elemani bireysel
+//? degerler haline getirir.
+
+
+// ORNEK - 1
+const ucanAraclar = ["helicopter", "drone", "ucak", "fuze"]
+const karaAraclari = ["araba", "bisiklet", "marti"]
+
+const tasitlar = [ucanAraclar, karaAraclari]  //? Nested birlestirme
+console.log(tasitlar);
+
+const flatTasitlar = [...ucanAraclar, ...karaAraclari ]  //! bi diziler (...) spread yontemi ile iterable dan non-iterable geciyor yani bireysel
+
+console.log(flatTasitlar);
+
+// ORNEK - 2
+const cumle = "Uzun ince bir yoldayim."  // non-iterable => iterable donusturme
+
+const cumleDizisi = [...cumle]  // 22 elemanli bir diziye donustu.
+console.log(cumleDizisi);  // ['U', 'z', 'u', 'n', ' ', 'i', 'n', 'c', 'e', ' ', 'b', 'i', 'r', ' ', 'y', 'o', 'l', 'd', 'a', 'y', 'i', 'm', '.']
+
+// ORNEK - 3
+//? Spread ile iterable(array) olan bir seyi non-iterable'a cevirmek:
+
+const numbers = [1, 3, 4, 5]
+
+console.log(Math.max(...numbers));  // 5
+console.log(Math.max(2, 9, ...numbers));  // 9
+
+
+
+
+
+
